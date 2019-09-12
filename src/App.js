@@ -8,7 +8,8 @@ class App extends React.Component {
   state = {
     p1: '',
     p2: '',
-    board: [['', '', ''], ['', '', ''], ['', '', '']]
+    board: [['', '', ''], ['', '', ''], ['', '', '']],
+    winner: ''
   };
 
   handleNewGame = (p1, p2) => {
@@ -18,6 +19,9 @@ class App extends React.Component {
     const board = cloneDeep(this.state.board);
 
     board[rowIndex][cellIndex] = 'X';
+    if (board[0].every(cell => cell === 'X')) {
+      this.setState({ winner: 'X' });
+    }
     this.setState({ board });
   };
 
@@ -31,6 +35,11 @@ class App extends React.Component {
           board={this.state.board}
           onCellClicked={this.handleCellClicked}
         ></Game>
+        {this.state.winner && (
+          <div data-testid="winner">
+            {this.state.winner === 'X' ? this.state.p1 : this.state.p2}
+          </div>
+        )}
       </div>
     );
   }
