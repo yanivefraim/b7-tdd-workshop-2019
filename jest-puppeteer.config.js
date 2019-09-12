@@ -6,6 +6,6 @@ module.exports = {
     debug: true
   },
   launch: {
-    devtools: true
+    devtools: false
   }
 };

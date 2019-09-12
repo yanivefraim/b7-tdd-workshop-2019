@@ -22,7 +22,6 @@ test('should have an "X" after first player clicks', async () => {
 });
 
 test('First player should win the game', async () => {
-  debugger;
   const player1 = 'Yaniv';
   const player2 = 'Computer';
 
@@ -57,7 +56,6 @@ function getACellAt(index) {
   return page.$$eval(
     'td',
     (tds, i) => {
-      debugger;
       return tds[i].innerText;
     },
     index
